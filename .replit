@@ -37,4 +37,3 @@ defaultBucketID = "replit-objstore-cffa3ecf-01b6-47d5-8aab-d66596f33729"
 [userenv]
 
 [userenv.shared]
-GITHUB_PAT = "REDACTED"
