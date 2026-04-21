@@ -1,0 +1,36 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: "Nunito", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fredoka", ui-sans-serif, system-ui, sans-serif;
+
+  --color-peekaboo-yellow: #FFD166;
+  --color-peekaboo-teal: #06D6A0;
+  --color-peekaboo-pink: #EF476F;
+  --color-peekaboo-blue: #118AB2;
+  --color-peekaboo-purple: #8338EC;
+  --color-peekaboo-orange: #F77F00;
+
+  --color-peekaboo-bg: #FDF9F1;
+}
+
+body {
+  background-color: var(--color-peekaboo-bg);
+  color: #2b2d42;
+  overflow-x: hidden;
+  font-family: var(--font-sans);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.bg-polka {
+  background-image: radial-gradient(rgba(255, 209, 102, 0.4) 3px, transparent 3px);
+  background-size: 32px 32px;
+}
+
+.wavy-border {
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+}
