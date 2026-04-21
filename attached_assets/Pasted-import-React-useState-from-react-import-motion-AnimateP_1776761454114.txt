@@ -1,0 +1,76 @@
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Palette } from 'lucide-react';
+import { colors } from './BrandData';
+import { playSound } from './SoundUtils';
+
+export default function ColorPalette() {
+  const [copiedColor, setCopiedColor] = useState(null);
+
+  const copyColor = (hex) => {
+    navigator.clipboard.writeText(hex);
+    setCopiedColor(hex);
+    playSound('click');
+    setTimeout(() => setCopiedColor(null), 1500);
+  };
+
+  return (
+    <section id="colors" className="py-24 px-6">
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <div className="inline-flex items-center gap-2 bg-[#FFD166]/20 px-5 py-2 rounded-full mb-4">
+            <Palette size={20} className="text-[#F77F00]" />
+            <span className="font-semibold text-[#F77F00]">Color Palette</span>
+          </div>
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">
+            Our Magic Colors
+          </h2>
+          <p className="text-muted-foreground mt-4 max-w-lg mx-auto text-lg">
+            A vibrant, joy-filled palette designed to captivate young minds and spark curiosity.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5">
+          {colors.map((color, index) => (
+            <motion.div
+              key={color.hex}
+              initial={{ scale: 0, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.05, type: "spring", stiffness: 200 }}
+              whileHover={{ scale: 1.08, y: -5 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => copyColor(color.hex)}
+              onHoverStart={() => playSound('hover')}
+              className="cursor-pointer group"
+            >
+              <div
+                className={`${color.class} h-28 rounded-2xl shadow-lg mb-3 flex items-center justify-center transition-shadow group-hover:shadow-xl relative overflow-hidden`}
+              >
+                <AnimatePresence>
+                  {copiedColor === color.hex && (
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      exit={{ scale: 0 }}
+                      className="absolute inset-0 bg-black/30 flex items-center justify-center rounded-2xl"
+                    >
+                      <span className="text-white font-bold text-sm">Copied!</span>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+              <p className="font-bold text-sm text-foreground">{color.name}</p>
+              <p className="text-xs text-muted-foreground font-mono">{color.hex}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

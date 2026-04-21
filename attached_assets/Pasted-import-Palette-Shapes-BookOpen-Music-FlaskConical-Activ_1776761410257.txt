@@ -1,0 +1,102 @@
+import { Palette, Shapes, BookOpen, Music, FlaskConical, Activity, Hammer, Star } from 'lucide-react';
+import React from 'react';
+
+export const colors = [
+  { name: 'Sunshine Yellow', hex: '#FFD166', class: 'bg-[#FFD166]' },
+  { name: 'Bubblegum Pink', hex: '#EF476F', class: 'bg-[#EF476F]', textLight: true },
+  { name: 'Playful Teal', hex: '#06D6A0', class: 'bg-[#06D6A0]' },
+  { name: 'Curious Blue', hex: '#118AB2', class: 'bg-[#118AB2]', textLight: true },
+  { name: 'Magic Purple', hex: '#8338EC', class: 'bg-[#8338EC]', textLight: true },
+  { name: 'Giggle Orange', hex: '#F77F00', class: 'bg-[#F77F00]', textLight: true },
+  { name: 'Zesty Lime', hex: '#80ED99', class: 'bg-[#80ED99]' },
+  { name: 'Sky High Blue', hex: '#48CAE4', class: 'bg-[#48CAE4]' },
+  { name: 'Cheeky Coral', hex: '#F25F5C', class: 'bg-[#F25F5C]', textLight: true },
+  { name: 'Dreamy Lavender', hex: '#B5179E', class: 'bg-[#B5179E]', textLight: true },
+  { name: 'Peachy Keen', hex: '#FFB703', class: 'bg-[#FFB703]' },
+];
+
+export const characters = [
+  {
+    name: "Pip the Bunny",
+    role: "The Creator",
+    description: "Always holding a giant crayon! Pip teaches kids about colors, drawing, and using their imagination to build new worlds.",
+    color: "#EF476F",
+    icon: <Palette size={48} className="text-white" />,
+    delay: 0.1
+  },
+  {
+    name: "Barnaby Bear",
+    role: "The Explorer",
+    description: "Wears a tiny explorer hat. Barnaby takes kids on wild adventures to learn about animals, nature, and the alphabet.",
+    color: "#06D6A0",
+    icon: <BookOpen size={48} className="text-white" />,
+    delay: 0.2
+  },
+  {
+    name: "Dotty the Owl",
+    role: "The Musician",
+    description: "Has big musical note glasses! Dotty sings catchy songs about numbers, daily hygiene routines, and being a good friend.",
+    color: "#8338EC",
+    icon: <Music size={48} className="text-white" />,
+    delay: 0.3
+  },
+  {
+    name: "Daisy the Dino",
+    role: "The Scientist",
+    description: "Equipped with tiny safety goggles! Daisy makes volcanoes, mixes colors, and asks 'Why?' about everything in nature.",
+    color: "#80ED99",
+    icon: <FlaskConical size={48} className="text-white" />,
+    delay: 0.4
+  },
+  {
+    name: "Milo the Monkey",
+    role: "The Gymnast",
+    description: "Always swinging in! Milo gets kids off the couch to stretch, dance, and learn about the human body.",
+    color: "#F77F00",
+    icon: <Activity size={48} className="text-white" />,
+    delay: 0.5
+  },
+  {
+    name: "Leo the Lion",
+    role: "The Builder",
+    description: "Wearing a yellow hard hat. Leo loves stacking blocks, counting materials, and teaching cause and effect.",
+    color: "#FFB703",
+    icon: <Hammer size={48} className="text-white" />,
+    delay: 0.6
+  }
+];
+
+export const contentPillars = [
+  {
+    title: "Learn & Play Adventures",
+    description: "Engaging educational journeys where kids master essential foundational skills through interactive play.",
+    items: ["ABC Scavenger Hunts", "Counting with Magic Blocks", "Shapes in the Real World"],
+    bgColor: "bg-[#FFD166]",
+    textColor: "text-[#F77F00]",
+    icon: <Shapes size={32} strokeWidth={2.5} />
+  },
+  {
+    title: "Silly Songs & Dances",
+    description: "High-energy musical segments designed to get kids moving and build healthy daily routines.",
+    items: ["The Freeze Dance Bop", "Brush Your Teeth Rap", "Good Morning Sun Anthem"],
+    bgColor: "bg-[#EF476F]",
+    textColor: "text-white",
+    icon: <Music size={32} strokeWidth={2.5} />
+  },
+  {
+    title: "Creative Craft Time",
+    description: "Hands-on DIY projects that encourage imagination, fine motor skills, and safe messy play.",
+    items: ["Cardboard Castle Building", "Finger Painting Fun", "Making Play-Doh Safely"],
+    bgColor: "bg-[#06D6A0]",
+    textColor: "text-[#118AB2]",
+    icon: <Palette size={32} strokeWidth={2.5} />
+  },
+  {
+    title: "Storybook Surprises",
+    description: "Immersive narrative experiences featuring our beloved mascots and interactive storytelling.",
+    items: ["Interactive Pop-up Stories", "Mascot Puppet Shows", "Where is Pip Hiding?"],
+    bgColor: "bg-[#118AB2]",
+    textColor: "text-white",
+    icon: <Star size={32} strokeWidth={2.5} />
+  }
+];

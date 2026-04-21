@@ -1,0 +1,66 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Rocket } from 'lucide-react';
+import { contentPillars } from './BrandData';
+import { playSound } from './SoundUtils';
+
+export default function ContentPillars() {
+  return (
+    <section className="py-24 px-6">
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <div className="inline-flex items-center gap-2 bg-[#06D6A0]/10 px-5 py-2 rounded-full mb-4">
+            <Rocket size={20} className="text-[#06D6A0]" />
+            <span className="font-semibold text-[#06D6A0]">Content Strategy</span>
+          </div>
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">
+            Content Pillars
+          </h2>
+          <p className="text-muted-foreground mt-4 max-w-lg mx-auto text-lg">
+            Four core categories that make up the magical world of Peekaboo Play House.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {contentPillars.map((pillar, index) => (
+            <motion.div
+              key={pillar.title}
+              initial={{ y: 40, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, type: "spring" }}
+              whileHover={{ y: -5 }}
+              onHoverStart={() => playSound('hover')}
+              className={`${pillar.bgColor} rounded-3xl p-8 shadow-lg cursor-pointer`}
+            >
+              <div className="flex items-start gap-4 mb-4">
+                <div className="bg-white/20 rounded-2xl p-3">
+                  <div className={pillar.textColor}>{pillar.icon}</div>
+                </div>
+                <div>
+                  <h3 className={`font-display text-2xl font-bold ${pillar.textColor}`}>
+                    {pillar.title}
+                  </h3>
+                  <p className={`${pillar.textColor} opacity-80 mt-1`}>{pillar.description}</p>
+                </div>
+              </div>
+              <ul className="space-y-2 mt-6">
+                {pillar.items.map((item) => (
+                  <li key={item} className={`flex items-center gap-2 ${pillar.textColor} font-semibold`}>
+                    <span className="w-2 h-2 bg-white/50 rounded-full shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

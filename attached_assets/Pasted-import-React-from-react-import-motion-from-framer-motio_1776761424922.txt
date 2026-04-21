@@ -1,0 +1,76 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Image, Type } from 'lucide-react';
+
+export default function BrandGuidelines() {
+  return (
+    <section className="py-24 px-6 bg-white/50">
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">
+            Brand Guidelines
+          </h2>
+          <p className="text-muted-foreground mt-4 max-w-lg mx-auto text-lg">
+            Rules for keeping the Peekaboo magic consistent everywhere.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Logo Usage */}
+          <motion.div
+            initial={{ y: 30, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            className="bg-white rounded-3xl shadow-lg p-8 border border-slate-100"
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-12 bg-[#8338EC]/10 rounded-xl flex items-center justify-center">
+                <Image size={24} className="text-[#8338EC]" />
+              </div>
+              <h3 className="font-display text-xl font-bold">Logo Usage</h3>
+            </div>
+            <ul className="space-y-3 text-slate-700">
+              <li className="flex gap-2"><span>✅</span><span>Always ensure the logo has clear space around it to breathe.</span></li>
+              <li className="flex gap-2"><span>✅</span><span>Use the full color logo on light backgrounds (like Peekaboo Cream).</span></li>
+              <li className="flex gap-2"><span>❌</span><span>Do not stretch, distort, or change the primary logo colors.</span></li>
+              <li className="flex gap-2"><span>❌</span><span>Avoid placing the logo over busy video frames without a solid drop shadow.</span></li>
+            </ul>
+          </motion.div>
+
+          {/* Typography */}
+          <motion.div
+            initial={{ y: 30, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="bg-white rounded-3xl shadow-lg p-8 border border-slate-100"
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-12 bg-[#06D6A0]/10 rounded-xl flex items-center justify-center">
+                <Type size={24} className="text-[#06D6A0]" />
+              </div>
+              <h3 className="font-display text-xl font-bold">Typography</h3>
+            </div>
+            <div className="space-y-6">
+              <div>
+                <p className="text-sm font-bold text-muted-foreground uppercase tracking-wide mb-2">Display Font</p>
+                <p className="font-display text-3xl font-bold text-[#8338EC]">Fredoka</p>
+                <p className="text-sm text-muted-foreground mt-1">Used for headings, mascot names, and titles</p>
+              </div>
+              <div>
+                <p className="text-sm font-bold text-muted-foreground uppercase tracking-wide mb-2">Body Font</p>
+                <p className="text-3xl font-bold text-[#118AB2]" style={{ fontFamily: 'Nunito' }}>Nunito</p>
+                <p className="text-sm text-muted-foreground mt-1">Used for body text, descriptions, and UI elements</p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
