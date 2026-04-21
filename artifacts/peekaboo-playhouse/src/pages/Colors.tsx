@@ -42,10 +42,10 @@ export default function Colors() {
               transition={{ delay: i * 0.04, type: "spring" }}
               whileHover={{ y: -6, scale: 1.06 }}
               whileTap={{ scale: 0.94 }}
-              className="relative h-40 rounded-3xl shadow-xl flex flex-col items-center justify-center font-display font-extrabold border-4 border-white overflow-hidden"
+              className="relative h-40 rounded-3xl shadow-xl flex flex-col items-center justify-center font-display font-extrabold border-4 border-white overflow-hidden px-3"
               style={{ backgroundColor: c.hex, color: textColor }}
             >
-              <div className="text-2xl">{lang === "ar" ? c.ar : c.en}</div>
+              <div className="text-xl sm:text-2xl truncate w-full text-center">{lang === "ar" ? c.ar : c.en}</div>
               <div className="text-xs font-mono opacity-80 mt-1">{c.hex}</div>
               <AnimatePresence>
                 {copied === c.hex && (

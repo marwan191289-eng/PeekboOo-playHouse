@@ -121,25 +121,32 @@ export interface MediaItem {
 }
 
 export const defaultSongs: MediaItem[] = [
-  { id: "s1", title: "ABC Song (Cocomelon)", youtubeId: "_UR-l3QI2nE", lang: "en" },
+  { id: "s1", title: "ABC Song (Super Simple Songs)", youtubeId: "_UR-l3QI2nE", lang: "en" },
   { id: "s2", title: "Baby Shark Dance", youtubeId: "XqZsoesa55w", lang: "en" },
   { id: "s3", title: "Wheels on the Bus", youtubeId: "e_04ZrNroTo", lang: "en" },
   { id: "s4", title: "Twinkle Twinkle Little Star", youtubeId: "yCjJyiqpAuU", lang: "en" },
   { id: "s5", title: "Old MacDonald Had a Farm", youtubeId: "_6HzoUcx3eo", lang: "en" },
   { id: "s6", title: "Five Little Ducks", youtubeId: "pZw9veQ76fo", lang: "en" },
-  { id: "s7", title: "أنشودة الحروف العربية - زكريا", youtubeId: "BNUSnP6mY4o", lang: "ar" },
-  { id: "s8", title: "أغنية الأرقام للأطفال", youtubeId: "MjRrPVLOKy0", lang: "ar" },
-  { id: "s9", title: "أغنية الألوان - مرح كي جي", youtubeId: "5jRGD9-Yyq0", lang: "ar" },
-  { id: "s10", title: "أنشودة الحيوانات", youtubeId: "FpiWSFcL3-c", lang: "ar" },
+  { id: "s7", title: "أنشودة الحروف الأبجدية العربية - طيور بيبي", youtubeId: "o1DHmi9hJvg", lang: "ar" },
+  { id: "s8", title: "أغنية الأرقام والفواكه - دوت بيبي", youtubeId: "Imw_FCW_ZHQ", lang: "ar" },
+  { id: "s9", title: "أغنية الألوان للأطفال", youtubeId: "AdQCja4MBcY", lang: "ar" },
+  { id: "s10", title: "أنشودة الحيوانات وأصواتها للأطفال", youtubeId: "h3NgxRFl4zs", lang: "ar" },
+  { id: "s11", title: "يا غنماتي - عد الأرقام مع الغنمات", youtubeId: "mAgXHlTm7-c", lang: "ar" },
+  { id: "s12", title: "أغنية تعلم الحيوانات للأطفال", youtubeId: "1FV2X5PMI3Y", lang: "ar" },
 ];
 
 export const defaultVideos: MediaItem[] = [
-  { id: "v1", title: "Learn Animals & Sounds", youtubeId: "wcLNxqDbiHk", lang: "en" },
-  { id: "v2", title: "Learn Colors with Toys", youtubeId: "rJZW2u5WtXQ", lang: "en" },
-  { id: "v3", title: "Numbers 1 to 20 for Kids", youtubeId: "bGetqbqDVaA", lang: "en" },
+  { id: "v1", title: "Animal Sounds Song for Kids", youtubeId: "Woc5c8mePR4", lang: "en" },
+  { id: "v2", title: "The Color Song for Children", youtubeId: "wceMsYSyNUQ", lang: "en" },
+  { id: "v3", title: "Numbers 1 to 10 - Counting Song", youtubeId: "DR-cfDsHCGA", lang: "en" },
   { id: "v4", title: "Shapes Song for Kids", youtubeId: "OEbRDtCAFdU", lang: "en" },
-  { id: "v5", title: "تعلم الحروف العربية", youtubeId: "TUWyGuOXulU", lang: "ar" },
-  { id: "v6", title: "تعلم الأرقام بالعربية", youtubeId: "FZycwWUFdQ8", lang: "ar" },
+  { id: "v5", title: "Colors Song for Toddlers", youtubeId: "oyJDQSnjTM4", lang: "en" },
+  { id: "v6", title: "Animals & Sounds for Kids", youtubeId: "zXEq-QO3xTg", lang: "en" },
+  { id: "v7", title: "تعلم الحروف العربية للأطفال", youtubeId: "ZnnPhPAWxg4", lang: "ar" },
+  { id: "v8", title: "أنشودة الحروف العربية بالحركات", youtubeId: "nWH6O2tux88", lang: "ar" },
+  { id: "v9", title: "تعلم الأرقام بالعربية للأطفال", youtubeId: "EhDDccFJk3w", lang: "ar" },
+  { id: "v10", title: "تعلم الألوان بالعربية للأطفال", youtubeId: "ZbIty-R_WnM", lang: "ar" },
+  { id: "v11", title: "تعلم أسماء الحيوانات وأصواتها", youtubeId: "BjA3RAOLEKw", lang: "ar" },
 ];
 
 export interface QuizQuestion {

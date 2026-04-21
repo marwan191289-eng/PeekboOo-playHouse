@@ -43,18 +43,18 @@ export default function Animals() {
               onClick={() => handleClick(a)}
               whileHover={{ y: -6, scale: 1.05 }}
               whileTap={{ scale: 0.92 }}
-              animate={isActive ? { rotate: [0, -10, 10, 0], scale: [1, 1.2, 1] } : {}}
-              className="relative bg-white rounded-3xl p-5 shadow-lg flex flex-col items-center gap-2 border-4 hover:shadow-2xl transition-shadow"
+              animate={isActive ? { rotate: [0, -8, 8, 0], scale: [1, 1.15, 1] } : {}}
+              className="relative bg-white rounded-3xl p-4 pt-7 shadow-lg flex flex-col items-center justify-center gap-1 border-4 hover:shadow-2xl transition-shadow overflow-hidden min-h-[180px]"
               style={{ borderColor: color }}
             >
-              <div className="text-6xl">{a.emoji}</div>
-              <div className="font-display text-xl font-extrabold" style={{ color }}>
+              <Volume2 size={14} className="absolute top-2 end-2 text-slate-400 pointer-events-none" />
+              <div className="text-5xl sm:text-6xl leading-none">{a.emoji}</div>
+              <div className="font-display text-lg sm:text-xl font-extrabold truncate w-full text-center px-1" style={{ color }}>
                 {info.name}
               </div>
               {info.sound && (
-                <div className="text-xs font-bold text-slate-500">{info.sound}</div>
+                <div className="text-xs font-bold text-slate-500 truncate w-full text-center px-1">{info.sound}</div>
               )}
-              <Volume2 size={14} className="absolute top-2 end-2 text-slate-400" />
             </motion.button>
           );
         })}

@@ -72,16 +72,21 @@ export default function Letters() {
               onClick={() => handleClick(item)}
               whileHover={{ y: -4, scale: 1.05 }}
               whileTap={{ scale: 0.92 }}
-              animate={isActive ? { scale: [1, 1.15, 1], rotate: [0, -8, 8, 0] } : {}}
-              className="relative bg-white rounded-3xl p-4 shadow-lg flex flex-col items-center gap-2 group cursor-pointer border-4 hover:shadow-2xl transition-shadow"
+              animate={isActive ? { scale: [1, 1.12, 1], rotate: [0, -6, 6, 0] } : {}}
+              className="relative bg-white rounded-3xl p-3 pt-7 shadow-lg flex flex-col items-center justify-center gap-1 group cursor-pointer border-4 hover:shadow-2xl transition-shadow overflow-hidden min-h-[160px]"
               style={{ borderColor: color }}
             >
-              <div className="text-5xl md:text-6xl font-display font-extrabold" style={{ color }}>
+              <Volume2 size={14} className="absolute top-2 end-2 text-slate-400 group-hover:text-slate-700 pointer-events-none" />
+              <div
+                className="font-display font-extrabold leading-none text-center text-[44px] sm:text-5xl"
+                style={{ color }}
+              >
                 {item.ch}
               </div>
-              <div className="text-3xl">{item.emoji}</div>
-              <div className="text-xs md:text-sm font-bold text-slate-700 text-center">{item.word}</div>
-              <Volume2 size={14} className="absolute top-2 end-2 text-slate-400 group-hover:text-slate-700" />
+              <div className="text-2xl leading-none">{item.emoji}</div>
+              <div className="text-xs sm:text-sm font-bold text-slate-700 text-center truncate w-full px-1">
+                {item.word}
+              </div>
             </motion.button>
           );
         })}
