@@ -61,18 +61,18 @@ export default function Numbers() {
               onClick={() => handleClick(item)}
               whileHover={{ y: -4, scale: 1.04 }}
               whileTap={{ scale: 0.92 }}
-              animate={isActive ? { scale: [1, 1.15, 1] } : {}}
-              className="relative bg-white rounded-3xl p-5 shadow-lg flex flex-col items-center gap-2 group border-4 hover:shadow-2xl transition-shadow"
+              animate={isActive ? { scale: [1, 1.12, 1] } : {}}
+              className="relative bg-white rounded-3xl p-4 pt-7 shadow-lg flex flex-col items-center justify-center gap-1 group border-4 hover:shadow-2xl transition-shadow overflow-hidden min-h-[180px]"
               style={{ borderColor: color }}
             >
-              <div className="text-6xl font-display font-extrabold" style={{ color }}>
+              <Volume2 size={14} className="absolute top-2 end-2 text-slate-400 group-hover:text-slate-700 pointer-events-none" />
+              <div className="text-5xl sm:text-6xl font-display font-extrabold leading-none" style={{ color }}>
                 {tab === "ar" ? item.ar.digit : item.en.digit}
               </div>
-              <div className="text-xl font-bold text-slate-700">
+              <div className="text-lg sm:text-xl font-bold text-slate-700 truncate w-full text-center px-1">
                 {tab === "ar" ? item.ar.name : item.en.name}
               </div>
-              <div className="text-lg leading-tight">{item.emoji}</div>
-              <Volume2 size={14} className="absolute top-2 end-2 text-slate-400 group-hover:text-slate-700" />
+              <div className="text-base leading-none">{item.emoji}</div>
             </motion.button>
           );
         })}

@@ -1,40 +1,60 @@
 import { Router, type IRouter } from "express";
+import { MsEdgeTTS, OUTPUT_FORMAT } from "msedge-tts";
 
 const router: IRouter = Router();
+
+const VOICES: Record<string, string> = {
+  ar: "ar-EG-SalmaNeural",
+  en: "en-US-AnaNeural",
+};
 
 const UA =
   "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36";
 
-function chunkText(text: string, maxLen = 180): string[] {
-  if (text.length <= maxLen) return [text];
-  const parts: string[] = [];
-  const sentences = text.split(/([.!?؟،,]+\s*)/);
+async function googleFallback(text: string, lang: string): Promise<Buffer> {
+  const chunks: string[] = [];
   let buf = "";
-  for (const s of sentences) {
-    if ((buf + s).length > maxLen && buf) {
-      parts.push(buf);
-      buf = s;
-    } else {
-      buf += s;
-    }
+  for (const part of text.split(/([.!?؟،,]+\s*)/)) {
+    if ((buf + part).length > 180 && buf) {
+      chunks.push(buf);
+      buf = part;
+    } else buf += part;
   }
-  if (buf) parts.push(buf);
-  return parts;
+  if (buf) chunks.push(buf);
+  const out: Buffer[] = [];
+  for (let i = 0; i < chunks.length; i++) {
+    const url = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(
+      chunks[i]!,
+    )}&tl=${lang}&total=${chunks.length}&idx=${i}&textlen=${chunks[i]!.length}&client=tw-ob`;
+    const r = await fetch(url, {
+      headers: { "User-Agent": UA, Referer: "https://translate.google.com/" },
+    });
+    if (!r.ok) throw new Error(`google_tts ${r.status}`);
+    out.push(Buffer.from(await r.arrayBuffer()));
+  }
+  return Buffer.concat(out);
 }
 
-async function fetchOne(text: string, lang: string, total: number, idx: number): Promise<Buffer> {
-  const url = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(
-    text,
-  )}&tl=${lang}&total=${total}&idx=${idx}&textlen=${text.length}&client=tw-ob`;
-  const r = await fetch(url, {
-    headers: {
-      "User-Agent": UA,
-      Referer: "https://translate.google.com/",
-      Accept: "audio/mpeg,*/*",
-    },
+async function edgeNeural(text: string, lang: string): Promise<Buffer> {
+  const tts = new MsEdgeTTS();
+  await tts.setMetadata(VOICES[lang]!, OUTPUT_FORMAT.AUDIO_24KHZ_48KBITRATE_MONO_MP3);
+  // Slower rate + slightly higher pitch suits young children
+  const stream = tts.toStream(text, { rate: "-10%", pitch: "+5%" });
+  const chunks: Buffer[] = [];
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => reject(new Error("edge_timeout")), 12000);
+    stream.audioStream.on("data", (c: Buffer) => chunks.push(c));
+    stream.audioStream.on("end", () => {
+      clearTimeout(timer);
+      const buf = Buffer.concat(chunks);
+      if (buf.length === 0) reject(new Error("edge_empty"));
+      else resolve(buf);
+    });
+    stream.audioStream.on("error", (e: Error) => {
+      clearTimeout(timer);
+      reject(e);
+    });
   });
-  if (!r.ok) throw new Error(`upstream ${r.status}`);
-  return Buffer.from(await r.arrayBuffer());
 }
 
 router.get("/tts", async (req, res) => {
@@ -49,15 +69,16 @@ router.get("/tts", async (req, res) => {
   }
 
   try {
-    const chunks = chunkText(text);
-    const buffers: Buffer[] = [];
-    for (let i = 0; i < chunks.length; i++) {
-      const buf = await fetchOne(chunks[i]!, lang, chunks.length, i);
-      buffers.push(buf);
+    let audio: Buffer;
+    try {
+      audio = await edgeNeural(text, lang);
+    } catch (err) {
+      req.log.warn({ err }, "edge tts failed, falling back to google");
+      audio = await googleFallback(text, lang);
     }
     res.setHeader("Content-Type", "audio/mpeg");
     res.setHeader("Cache-Control", "public, max-age=86400");
-    res.send(Buffer.concat(buffers));
+    res.send(audio);
   } catch (err) {
     req.log.error({ err }, "tts proxy error");
     res.status(502).json({ error: "tts_failed" });
