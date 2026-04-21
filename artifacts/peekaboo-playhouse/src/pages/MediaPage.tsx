@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Trash2, Play } from "lucide-react";
+import { Plus, Trash2, Play, ExternalLink } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 import { useLanguage } from "@/contexts/LanguageContext";
 import type { MediaItem } from "@/data/learning";
@@ -168,11 +168,12 @@ export default function MediaPage({
             <div className="aspect-video bg-slate-100 relative">
               {playing === item.id ? (
                 <iframe
-                  src={`https://www.youtube.com/embed/${item.youtubeId}?autoplay=1&rel=0`}
+                  src={`https://www.youtube-nocookie.com/embed/${item.youtubeId}?autoplay=1&rel=0&playsinline=1&modestbranding=1`}
                   title={item.title}
                   className="w-full h-full"
-                  allow="autoplay; encrypted-media; picture-in-picture"
+                  allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
                   allowFullScreen
+                  referrerPolicy="strict-origin-when-cross-origin"
                 />
               ) : (
                 <button
@@ -200,15 +201,27 @@ export default function MediaPage({
                   {item.lang === "ar" ? "العربية" : "English"}
                 </span>
               </div>
-              {item.id.startsWith("u_") && (
-                <button
-                  onClick={() => handleDelete(item.id)}
-                  className="text-slate-400 hover:text-[#EF476F] p-2 rounded-lg hover:bg-slate-100 transition-colors"
-                  aria-label="Delete"
+              <div className="flex items-center gap-1 shrink-0">
+                <a
+                  href={`https://www.youtube.com/watch?v=${item.youtubeId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-slate-400 hover:text-[#118AB2] p-2 rounded-lg hover:bg-slate-100 transition-colors"
+                  aria-label="Open in YouTube"
+                  title={lang === "ar" ? "افتح في يوتيوب" : "Open in YouTube"}
                 >
-                  <Trash2 size={16} />
-                </button>
-              )}
+                  <ExternalLink size={16} />
+                </a>
+                {item.id.startsWith("u_") && (
+                  <button
+                    onClick={() => handleDelete(item.id)}
+                    className="text-slate-400 hover:text-[#EF476F] p-2 rounded-lg hover:bg-slate-100 transition-colors"
+                    aria-label="Delete"
+                  >
+                    <Trash2 size={16} />
+                  </button>
+                )}
+              </div>
             </div>
           </motion.div>
         ))}

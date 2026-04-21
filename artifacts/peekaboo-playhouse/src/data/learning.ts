@@ -121,19 +121,25 @@ export interface MediaItem {
 }
 
 export const defaultSongs: MediaItem[] = [
-  { id: "s1", title: "أنشودة الحروف العربية", youtubeId: "TUWyGuOXulU", lang: "ar" },
-  { id: "s2", title: "أرقام بالعربية للأطفال", youtubeId: "pejl1G0YeUg", lang: "ar" },
-  { id: "s3", title: "ABC Song", youtubeId: "75p-N9YKqNo", lang: "en" },
-  { id: "s4", title: "Numbers Song 1-20", youtubeId: "D0Ajq682yrA", lang: "en" },
-  { id: "s5", title: "Old MacDonald", youtubeId: "_6HzoUcx3eo", lang: "en" },
-  { id: "s6", title: "أغنية الألوان", youtubeId: "Yu0rZAHOPCs", lang: "ar" },
+  { id: "s1", title: "ABC Song (Cocomelon)", youtubeId: "_UR-l3QI2nE", lang: "en" },
+  { id: "s2", title: "Baby Shark Dance", youtubeId: "XqZsoesa55w", lang: "en" },
+  { id: "s3", title: "Wheels on the Bus", youtubeId: "e_04ZrNroTo", lang: "en" },
+  { id: "s4", title: "Twinkle Twinkle Little Star", youtubeId: "yCjJyiqpAuU", lang: "en" },
+  { id: "s5", title: "Old MacDonald Had a Farm", youtubeId: "_6HzoUcx3eo", lang: "en" },
+  { id: "s6", title: "Five Little Ducks", youtubeId: "pZw9veQ76fo", lang: "en" },
+  { id: "s7", title: "أنشودة الحروف العربية - زكريا", youtubeId: "BNUSnP6mY4o", lang: "ar" },
+  { id: "s8", title: "أغنية الأرقام للأطفال", youtubeId: "MjRrPVLOKy0", lang: "ar" },
+  { id: "s9", title: "أغنية الألوان - مرح كي جي", youtubeId: "5jRGD9-Yyq0", lang: "ar" },
+  { id: "s10", title: "أنشودة الحيوانات", youtubeId: "FpiWSFcL3-c", lang: "ar" },
 ];
 
 export const defaultVideos: MediaItem[] = [
-  { id: "v1", title: "تعلم الحيوانات وأصواتها", youtubeId: "wcLNxqDbiHk", lang: "ar" },
-  { id: "v2", title: "Learn Colors with Crayons", youtubeId: "ybt2DSREAQs", lang: "en" },
-  { id: "v3", title: "Animal Sounds for Kids", youtubeId: "Em8UcMaR8t0", lang: "en" },
-  { id: "v4", title: "تعلم الأشكال للأطفال", youtubeId: "U46Yo_6z_F4", lang: "ar" },
+  { id: "v1", title: "Learn Animals & Sounds", youtubeId: "wcLNxqDbiHk", lang: "en" },
+  { id: "v2", title: "Learn Colors with Toys", youtubeId: "rJZW2u5WtXQ", lang: "en" },
+  { id: "v3", title: "Numbers 1 to 20 for Kids", youtubeId: "bGetqbqDVaA", lang: "en" },
+  { id: "v4", title: "Shapes Song for Kids", youtubeId: "OEbRDtCAFdU", lang: "en" },
+  { id: "v5", title: "تعلم الحروف العربية", youtubeId: "TUWyGuOXulU", lang: "ar" },
+  { id: "v6", title: "تعلم الأرقام بالعربية", youtubeId: "FZycwWUFdQ8", lang: "ar" },
 ];
 
 export interface QuizQuestion {
