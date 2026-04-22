@@ -3,6 +3,13 @@
   "compileOnSave": false,
   "files": [],
   "include": ["src"],
+  "compilerOptions": {
+    "diagnostics": true,
+    "extendedDiagnostics": true,
+    "traceResolution": true,
+    "listFiles": true,
+    "listEmittedFiles": true
+  },
   "references": [
     { "path": "./lib/db" },
     { "path": "./lib/api-client-react" },
