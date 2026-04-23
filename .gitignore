@@ -48,3 +48,4 @@ Thumbs.db
 .cache/
 .local/
 .corrupt-backups/
+.corrupt-backups/
